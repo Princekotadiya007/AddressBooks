@@ -25,12 +25,18 @@ namespace AddressBooks
                         Console.ReadLine();
                         break;
                     case 2:
-                        Console.WriteLine("Edit Contact");
+                        Console.WriteLine("Edit the Contact");
                         addressBooks.EditDetails("Prince");
                         addressBooks.Display();
                         Console.ReadLine();
                         break;
                     case 3:
+                        Console.WriteLine("Delete the Contact");
+                        addressBooks.DeleteContact("Prince");
+                        addressBooks.Display();
+                        Console.ReadLine();
+                        break;  
+                    case 4:
                         flag = false;
                         break;
                 }
