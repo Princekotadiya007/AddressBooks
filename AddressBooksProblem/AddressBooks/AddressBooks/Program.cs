@@ -12,8 +12,30 @@ namespace AddressBooks
         {
             Console.WriteLine("Welcome to Address Book Program ");
             AddressBooks addressBooks = new AddressBooks();
-            addressBooks.CreateContact();
-            addressBooks.Display();
+            bool flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \n Select 3: Delete contact ");
+                int option = Convert.ToInt32(Console.ReadLine());
+                switch(option)
+                {
+                    case 1:
+                        addressBooks.CreateContact();
+                        addressBooks.Display();
+                        Console.ReadLine();
+                        break;
+                    case 2:
+                        Console.WriteLine("Edit Contact");
+                        addressBooks.EditDetails("Prince");
+                        addressBooks.Display();
+                        Console.ReadLine();
+                        break;
+                    case 3:
+                        flag = false;
+                        break;
+                }
+            }
+           
         }
     }
 }
