@@ -98,18 +98,5 @@ namespace AddressBooks
 
             }
         }
-
-        public void DeleteContact(string name)
-        {
-            CreateContact deleteContact = new CreateContact();
-            foreach (var contact in contactList)
-            {
-                if (contact.FirstName.Equals(name))
-                {
-                    deleteContact = contact;
-                }
-                contactList.Remove(deleteContact);
-            }
-        }
     }
 }
