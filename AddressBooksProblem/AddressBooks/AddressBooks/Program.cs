@@ -21,17 +21,14 @@ namespace AddressBooks
                 {
                     case 1:
                         addressBooks.CreateContact();
-                        //addressBooks.Display();
                         break;
                     case 2:
                         Console.WriteLine("Edit the Contact");
                         addressBooks.EditDetails("Prince");
-                        //addressBooks.Display();
                         break;
                     case 3:
                         Console.WriteLine("Delete the Contact");
                         addressBooks.DeleteContact();
-                        //addressBooks.Display();
                         break;
                     case 4:
                         Console.WriteLine("Display the Contact");

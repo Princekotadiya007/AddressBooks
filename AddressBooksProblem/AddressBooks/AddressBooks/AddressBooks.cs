@@ -14,6 +14,7 @@ namespace AddressBooks
 
         public void CreateContact()
         {
+            CreateContact contact = new CreateContact();
             Console.WriteLine("Enter the First Name");
             contact.FirstName = Console.ReadLine();
 
@@ -105,15 +106,18 @@ namespace AddressBooks
         {
             Console.WriteLine("Enter the First Name");
             string name = Console.ReadLine();
-            CreateContact deleteContact = new CreateContact();
+            //CreateContact deleteContact = new CreateContact();
             foreach (var contact in contactList.ToList())
             {
                 if (contact.FirstName.Equals(name))
                 {
-                    deleteContact = contact;
+                    contactList.Remove(contact);
+                    Console.WriteLine("Contact hsa been Delete");
+                    break;
+                    //deleteContact = contact;
                 }
-                contactList.Remove(deleteContact);
-                Console.WriteLine("Contact hsa been Delete");
+                else
+                    Console.WriteLine("Enter Vaild Name");
             }
         }
     }
