@@ -42,6 +42,8 @@ namespace AddressBooks
         }
         public void Display()
         {
+            foreach(var contact in contactList)
+
             Console.WriteLine("Contact Datails" + "\nFirstName"+ contact.FirstName + "\nLastName"+ contact.LastName+"\nEmail"+ contact.Email+
                 "\nCity"+ contact.City+ "\nPhoneNumber"+ contact.PhoneNumber+ "\nAdress"+ contact.Address+ "\nState"+contact.State +"\nZip"+ contact.Zip);
         }
@@ -99,16 +101,19 @@ namespace AddressBooks
             }
         }
 
-        public void DeleteContact(string name)
+        public void DeleteContact()
         {
+            Console.WriteLine("Enter the First Name");
+            string name = Console.ReadLine();
             CreateContact deleteContact = new CreateContact();
-            foreach (var contact in contactList)
+            foreach (var contact in contactList.ToList())
             {
                 if (contact.FirstName.Equals(name))
                 {
                     deleteContact = contact;
                 }
                 contactList.Remove(deleteContact);
+                Console.WriteLine("Contact hsa been Delete");
             }
         }
     }

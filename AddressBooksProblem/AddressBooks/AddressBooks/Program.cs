@@ -15,28 +15,30 @@ namespace AddressBooks
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \n Select 3: Delete contact ");
+                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \nSelect 3: Delete contact, \nSelect 4: Display the Conatct ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch(option)
                 {
                     case 1:
                         addressBooks.CreateContact();
-                        addressBooks.Display();
-                        Console.ReadLine();
+                        //addressBooks.Display();
                         break;
                     case 2:
                         Console.WriteLine("Edit the Contact");
                         addressBooks.EditDetails("Prince");
-                        addressBooks.Display();
-                        Console.ReadLine();
+                        //addressBooks.Display();
                         break;
                     case 3:
                         Console.WriteLine("Delete the Contact");
-                        addressBooks.DeleteContact("Prince");
+                        addressBooks.DeleteContact();
+                        //addressBooks.Display();
+                        break;
+                    case 4:
+                        Console.WriteLine("Display the Contact");
                         addressBooks.Display();
                         Console.ReadLine();
-                        break;  
-                    case 4:
+                        break;
+                    case 5:
                         flag = false;
                         break;
                 }
