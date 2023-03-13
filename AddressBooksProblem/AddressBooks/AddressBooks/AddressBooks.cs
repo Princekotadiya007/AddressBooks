@@ -124,24 +124,15 @@ namespace AddressBooks
                 }
             }      
         }
-
-        //public void DeleteContact()
-        //{
-        //    Console.WriteLine("Enter the First Name");
-        //    string name = Console.ReadLine();
-        //    //CreateContact deleteContact = new CreateContact();
-        //    foreach (var contact in contactList.ToList())
-        //    {
-        //        if (contact.FirstName.Equals(name))
-        //        {
-        //            contactList.Remove(contact);
-        //            Console.WriteLine("Contact hsa been Delete");
-        //            break;
-        //            //deleteContact = contact;
-        //        }
-        //        else
-        //            Console.WriteLine("Enter Vaild Name");
-        //    }
-        //}
+        public void SearchCity()
+        {
+            Console.Write("Enter the City Name: ");
+            string CityName = Console.ReadLine();
+            Console.WriteLine("All the Contact of: " + CityName);
+            foreach (var contact in contactList.FindAll(x => x.City == CityName))
+            {
+                Console.WriteLine("Name: " + contact.FirstName + " " + contact.LastName);
+            }
+        }
     }
 }
