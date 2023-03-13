@@ -12,6 +12,9 @@ namespace AddressBooks
 
         List<CreateContact> contactList = new List<CreateContact>();
 
+        Dictionary<string, CreateContact> addressBookDictionry = new Dictionary<string, CreateContact>();
+        private IEnumerable<object> addressBookDictonary;
+
         public void CreateContact()
         {
             CreateContact contact = new CreateContact();
@@ -51,9 +54,9 @@ namespace AddressBooks
 
         public void EditDetails(string name)
         {
-            foreach (var contact in contactList)
+            foreach (var contact in addressBookDictionry)
             {
-                if (contact.FirstName.Equals(name))
+                if (contact.Key.Equals(name))
                 {
                     Console.WriteLine("1. Address, \n1 FirstName, \n2 Lastname, \n3 Email, \n4 City, \n5 PhoneNumber, \n6 Address, \n7 State, \n8 Zip ");
                     Console.WriteLine("1.Address");
@@ -62,35 +65,35 @@ namespace AddressBooks
                     {
                         case 1:
                             Console.WriteLine("Enter the new First Name");
-                            contact.FirstName = Console.ReadLine();
+                            contact.Value.FirstName = Console.ReadLine();
                             break;
                         case 2:
                             Console.WriteLine("Enter the Last Name");
-                            contact.LastName = Console.ReadLine();
+                            contact.Value.LastName = Console.ReadLine();
                             break;
                         case 3:
                             Console.WriteLine("Enter the Email");
-                            contact.Email = Console.ReadLine();
+                            contact.Value.Email = Console.ReadLine();
                             break;
                         case 4:
                             Console.WriteLine("Enter the City");
-                            contact.City = Console.ReadLine();
+                            contact.Value.City = Console.ReadLine();
                             break;
                         case 5:
                             Console.WriteLine("Enter the phone Number");
-                            contact.PhoneNumber = Console.ReadLine();
+                            contact.Value.PhoneNumber = Console.ReadLine();
                             break;
                         case 6:
                             Console.WriteLine("Enter the Address");
-                            contact.Address = Console.ReadLine();
+                            contact.Value.Address = Console.ReadLine();
                             break;  
                         case 7:
                             Console.WriteLine("Enter the State ");
-                            contact.State = Console.ReadLine();
+                            contact.Value.State = Console.ReadLine();
                             break;
                         case 8:
                             Console.WriteLine("Enter the Zip");
-                            contact.Zip = Convert.ToInt64(Console.ReadLine());
+                            contact.Value.Zip = Convert.ToInt64(Console.ReadLine());
                             break;
                     }
                 }
@@ -101,24 +104,44 @@ namespace AddressBooks
 
             }
         }
-
         public void DeleteContact()
         {
             Console.WriteLine("Enter the First Name");
             string name = Console.ReadLine();
             //CreateContact deleteContact = new CreateContact();
-            foreach (var contact in contactList.ToList())
+            foreach (var contact in addressBookDictonary)
             {
-                if (contact.FirstName.Equals(name))
+                if (addressBookDictionry.ContainsKey(name))
                 {
-                    contactList.Remove(contact);
+
+                    addressBookDictionry.Remove(name);
                     Console.WriteLine("Contact hsa been Delete");
                     break;
-                    //deleteContact = contact;
-                }
+                }   //deleteContact = contact;
                 else
+                {
                     Console.WriteLine("Enter Vaild Name");
-            }
+                }
+            }      
         }
+
+        //public void DeleteContact()
+        //{
+        //    Console.WriteLine("Enter the First Name");
+        //    string name = Console.ReadLine();
+        //    //CreateContact deleteContact = new CreateContact();
+        //    foreach (var contact in contactList.ToList())
+        //    {
+        //        if (contact.FirstName.Equals(name))
+        //        {
+        //            contactList.Remove(contact);
+        //            Console.WriteLine("Contact hsa been Delete");
+        //            break;
+        //            //deleteContact = contact;
+        //        }
+        //        else
+        //            Console.WriteLine("Enter Vaild Name");
+        //    }
+        //}
     }
 }
