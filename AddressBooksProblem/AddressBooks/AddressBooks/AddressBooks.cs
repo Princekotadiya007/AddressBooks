@@ -47,10 +47,10 @@ namespace AddressBooks
         }
         public void Display()
         {
-            foreach(var contact in contactList)
+            foreach (var contact in contactList)
 
-            Console.WriteLine("Contact Datails" + "\nFirstName"+ contact.FirstName + "\nLastName"+ contact.LastName+"\nEmail"+ contact.Email+
-                "\nCity"+ contact.City+ "\nPhoneNumber"+ contact.PhoneNumber+ "\nAdress"+ contact.Address+ "\nState"+contact.State +"\nZip"+ contact.Zip);
+                Console.WriteLine("Contact Datails" + "\nFirstName" + contact.FirstName + "\nLastName" + contact.LastName + "\nEmail" + contact.Email +
+                    "\nCity" + contact.City + "\nPhoneNumber" + contact.PhoneNumber + "\nAdress" + contact.Address + "\nState" + contact.State + "\nZip" + contact.Zip);
         }
 
         public void EditDetails(string name)
@@ -87,7 +87,7 @@ namespace AddressBooks
                         case 6:
                             Console.WriteLine("Enter the Address");
                             contact.Value.Address = Console.ReadLine();
-                            break;  
+                            break;
                         case 7:
                             Console.WriteLine("Enter the State ");
                             contact.Value.State = Console.ReadLine();
@@ -123,7 +123,7 @@ namespace AddressBooks
                 {
                     Console.WriteLine("Enter Vaild Name");
                 }
-            }      
+            }
         }
         public void SearchCity()
         {
@@ -141,11 +141,11 @@ namespace AddressBooks
             string CityName = Console.ReadLine();
             Console.WriteLine("All the Contact Details of: " + CityName);
 
-            List<CreateContact> contactsCity = contactList.FindAll(x => x.City == CityName);
-            addressBookCity.Add(CityName, contactsCity);
-            foreach (var contact in contactList.FindAll(x => x.City == CityName))
+            //List<CreateContact> contactsCity = contactList.FindAll(x => x.City == CityName);
+            //addressBookCity.Add(CityName, contactsCity);
+            foreach (var contact in addressBookCity[CityName])
             {
-                Console.WriteLine("First Name :"+ contact.FirstName);
+                Console.WriteLine("First Name :" + contact.FirstName);
                 Console.WriteLine("Last Name :" + contact.LastName);
                 Console.WriteLine("Email:" + contact.Email);
                 Console.WriteLine("City:" + contact.City);
@@ -153,6 +153,28 @@ namespace AddressBooks
                 Console.WriteLine("State :" + contact.State);
                 Console.WriteLine("Zip :" + contact.Zip);
                 Console.WriteLine("Phone Number :" + contact.PhoneNumber);
+            }
+        }
+        public void CountCity()
+        {
+            Dictionary<string, int> cityCount = new Dictionary<string, int>();
+
+            foreach (var contact in contactList)
+            {
+                if (!cityCount.ContainsKey(contact.City))
+                {
+                    cityCount.Add(contact.City, 1);
+                }
+                else
+                {
+                    cityCount[contact.City]++;
+                }
+            }
+
+            Console.WriteLine("City-wise count of contacts:");
+            foreach (var city in cityCount)
+            {
+                Console.WriteLine(city.Key + ": " + city.Value);
             }
         }
     }
