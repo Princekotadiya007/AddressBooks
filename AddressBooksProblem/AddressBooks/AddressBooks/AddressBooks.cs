@@ -187,5 +187,14 @@ namespace AddressBooks
                 Console.WriteLine(contact.FirstName + " " + contact.LastName);
             }
         }
+        public void SortByCityAndStateAndZip()
+        {
+            var sortedList = contactList.OrderBy(x => x.City).ThenBy(x => x.State).ThenBy(x => x.Zip);
+            Console.WriteLine("Contacts sorted by City and State:");
+            foreach (var contact in sortedList)
+            {
+                Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}, City: {contact.City}, State: {contact.State}, Zip: {contact.Zip}");
+            }
+        }
     }
 }
