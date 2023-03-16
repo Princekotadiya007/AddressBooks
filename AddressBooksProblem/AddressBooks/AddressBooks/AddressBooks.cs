@@ -13,7 +13,8 @@ namespace AddressBooks
         List<CreateContact> contactList = new List<CreateContact>();
 
         Dictionary<string, CreateContact> addressBookDictionry = new Dictionary<string, CreateContact>();
-        private IEnumerable<object> addressBookDictonary;
+        Dictionary<string, List<CreateContact>> addressBookCity = new Dictionary<string, List<CreateContact>>();
+
 
         public void CreateContact()
         {
@@ -109,7 +110,7 @@ namespace AddressBooks
             Console.WriteLine("Enter the First Name");
             string name = Console.ReadLine();
             //CreateContact deleteContact = new CreateContact();
-            foreach (var contact in addressBookDictonary)
+            foreach (var contact in addressBookDictionry)
             {
                 if (addressBookDictionry.ContainsKey(name))
                 {
@@ -132,6 +133,26 @@ namespace AddressBooks
             foreach (var contact in contactList.FindAll(x => x.City == CityName))
             {
                 Console.WriteLine("Name: " + contact.FirstName + " " + contact.LastName);
+            }
+        }
+        public void ViewCity()
+        {
+            Console.Write("Enter the City Name: ");
+            string CityName = Console.ReadLine();
+            Console.WriteLine("All the Contact Details of: " + CityName);
+
+            List<CreateContact> contactsCity = contactList.FindAll(x => x.City == CityName);
+            addressBookCity.Add(CityName, contactsCity);
+            foreach (var contact in contactList.FindAll(x => x.City == CityName))
+            {
+                Console.WriteLine("First Name :"+ contact.FirstName);
+                Console.WriteLine("Last Name :" + contact.LastName);
+                Console.WriteLine("Email:" + contact.Email);
+                Console.WriteLine("City:" + contact.City);
+                Console.WriteLine("Address :" + contact.Address);
+                Console.WriteLine("State :" + contact.State);
+                Console.WriteLine("Zip :" + contact.Zip);
+                Console.WriteLine("Phone Number :" + contact.PhoneNumber);
             }
         }
     }

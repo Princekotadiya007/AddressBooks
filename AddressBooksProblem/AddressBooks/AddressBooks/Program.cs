@@ -15,7 +15,7 @@ namespace AddressBooks
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \nSelect 3: Delete contact, \nSelect 4: Display the Conatct, \nSelect 5: Search CityName ");
+                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \nSelect 3: Delete contact, \nSelect 4: Display the Conatct, \nSelect 5: Search CityName,\nSelect 6: ViewCity Name ");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch(option)
                 {
@@ -37,9 +37,13 @@ namespace AddressBooks
                     case 5:
                         Console.WriteLine("CityName Search");
                         addressBooks.SearchCity();
-                        Console.ReadLine();
                         break;
                     case 6:
+                        Console.WriteLine("View city Name");
+                        addressBooks.ViewCity();
+                        Console.ReadLine();
+                        break;
+                    case 7:
                         flag = false;
                         break;
                 }
