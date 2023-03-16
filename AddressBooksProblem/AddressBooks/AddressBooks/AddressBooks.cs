@@ -177,5 +177,15 @@ namespace AddressBooks
                 Console.WriteLine(city.Key + ": " + city.Value);
             }
         }
+        public void SortByFirstName()
+        {
+            contactList.Sort((contact1, contact2) => contact1.FirstName.CompareTo(contact2.FirstName));
+
+            Console.WriteLine("Contacts sorted by first name:");
+            foreach (var contact in contactList)
+            {
+                Console.WriteLine(contact.FirstName + " " + contact.LastName);
+            }
+        }
     }
 }
