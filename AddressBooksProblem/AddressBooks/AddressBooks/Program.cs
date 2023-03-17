@@ -15,7 +15,7 @@ namespace AddressBooks
             bool flag = true;
             while (flag)
             {
-                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \nSelect 3: Delete contact, \nSelect 4: Display the Conatct, \nSelect 5: Search CityName,\nSelect 6: ViewCity Name,\nSelect 7: Count City,\nSelect 8: Sort by Name,\nSelect 9: sortBy State and city");
+                Console.WriteLine("Select 1: for creating Contact, \nSelect 2: Edit Contact, \nSelect 3: Delete contact, \nSelect 4: Display the Conatct, \nSelect 5: Search CityName,\nSelect 6: ViewCity Name,\nSelect 7: Count City,\nSelect 8: Sort by Name,\nSelect 9: sortBy State and city,\nSelect 10:Read IO File,\nSelect 11: Write IO File");
                 int option = Convert.ToInt32(Console.ReadLine());
                 switch(option)
                 {
@@ -56,6 +56,14 @@ namespace AddressBooks
                         addressBooks.SortByCityAndStateAndZip();
                         break;
                     case 10:
+                        Console.WriteLine("Read IO file");
+                        addressBooks.FileRander();
+                        break;
+                    case 11:
+                        Console.WriteLine("Write IO File");
+                        addressBooks.FileWrite();
+                        break;
+                    case 12:
                         flag = false;
                         break;
                 }

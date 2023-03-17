@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -14,6 +15,8 @@ namespace AddressBooks
 
         Dictionary<string, CreateContact> addressBookDictionry = new Dictionary<string, CreateContact>();
         Dictionary<string, List<CreateContact>> addressBookCity = new Dictionary<string, List<CreateContact>>();
+
+        //string AddressContact = "D:\\RFP-demo\\AddressBooks\\AddressBooksProblem\\AddressBooks\\AddressBooks\\AddressBookContact\\AddressContact.txt";
 
 
         public void CreateContact()
@@ -194,6 +197,38 @@ namespace AddressBooks
             foreach (var contact in sortedList)
             {
                 Console.WriteLine($"Name: {contact.FirstName} {contact.LastName}, City: {contact.City}, State: {contact.State}, Zip: {contact.Zip}");
+            }
+        }
+        public void FileRander()
+        {
+            string AddressContact = "D:\\RFP-demo\\AddressBooks\\AddressBooksProblem\\AddressBooks\\AddressBooks\\AddressBookContact\\AddressContact.txt";
+            using (StreamReader streamReader = File.OpenText(AddressContact))
+            {
+                string print = "";
+                while ((print = streamReader.ReadLine()) != null)
+                {
+                    Console.WriteLine(print);
+                }
+            }
+        }
+        public void FileWrite()
+        {
+            string AddressContact = "D:\\RFP-demo\\AddressBooks\\AddressBooksProblem\\AddressBooks\\AddressBooks\\AddressBookContact\\AddressContact.txt";
+            using (StreamWriter streamWriter = File.AppendText(AddressContact))
+            {
+                foreach(var contact in addressBookDictionry)
+                {
+                    streamWriter.WriteLine("Frist Name:" + contact.Value.FirstName);
+                    streamWriter.WriteLine("Last Name:" + contact.Value.LastName);
+                    streamWriter.WriteLine("E-Mail:" + contact.Value.Email);
+                    streamWriter.WriteLine("Phone Number:" + contact.Value.PhoneNumber);
+                    streamWriter.WriteLine("Address:" + contact.Value.Address);
+                    streamWriter.WriteLine("City:" + contact.Value.City);
+                    streamWriter.WriteLine("State:" + contact.Value.State);
+                    streamWriter.WriteLine("Zip:" + contact.Value.Zip);
+                }
+                streamWriter.Close();
+                Console.WriteLine(File.ReadAllText(AddressContact));
             }
         }
     }
